@@ -108,18 +108,6 @@ São um conjunto de vértices(V) e arestas(E), que são pares de vértices.
             }
         }
     }
-    ```
-    Aplicação: 
-    - Saber quantos componentes há no grafo
-    ```cpp
-    int numero_componentes = 0;
-    for (int i = 0; i <= n; i++) {
-        if (!vis[i]) {
-            numero_componentes++;
-            dfs(i);
-        }
-    }
-    ```
 
 - BFS (busca em largura)
 
@@ -147,6 +135,21 @@ São um conjunto de vértices(V) e arestas(E), que são pares de vértices.
                     q.push(u);
                 }
             }
+        }
+    }
+    ```
+
+- Aplicações: 
+    - Saber quantos componentes há no grafo
+    ```cpp
+    int numero_componentes = 0;
+    // Percorre todos os vertices
+    for (int i = 0; i <= n; i++) {
+        // Se ainda nao foi visitado
+        if (!vis[i]) {
+            numero_componentes++;
+            // Visita vizinhos
+            dfs(i); //bfs(i)
         }
     }
     ```
