@@ -1,10 +1,16 @@
 # Grafos
 
+- [Montagem de um Grafo](#montagem-de-um-grafo)
+- Flood Fill
+    - [DFS](#dfs)
+    - [BFS](#bfs)
+- [Dijkstra](#dijkstra)
+
 São um conjunto de vértices(V) e arestas(E), que são pares de vértices. Um caminho vai do vértice a até o b, e o comprimento é o número de arestas nele.
 
 > Grau de um vértice
     
- É o número de arestas que são incidentes no vértice
+É o número de arestas que são incidentes no vértice
 > Vertices vizinhos
 
 Dados dois vértices(u e v), eles são vizinhos se existir uma aresta (u,v) interligando-os, ou seja, se existir um caminho entre os dois.
@@ -101,57 +107,61 @@ Aresta da forma (u,u), a aresta começa e termina no mesmo vértice.
     
 > Preenche um grafo como se fosse um fluxo.
 
-- DFS (busca em profundidade)
+### DFS
+(Busca em Profundidade)
 
-    Em cada passo, olha-se os vizinhos do vértice V que se está avaliando, e para cada vizinho cuja componente não foi determinada(não visitado), faz-se a sua componente ser v e chama a função recursivamente nesse vértice.
+Em cada passo, olha-se os vizinhos do vértice V que se está avaliando, e para cada vizinho cuja componente não foi determinada(não visitado), faz-se a sua componente ser v e chama a função recursivamente nesse vértice.
 
-    ```cpp
-    // Matriz de Adjacência
-    vector<int> g[maxn];
-    // Marca se o vértice foi visitado
-    bool vis[maxn];
+```cpp
+// Matriz de Adjacência
+vector<int> g[maxn];
+// Marca se o vértice foi visitado
+bool vis[maxn];
 
-    int dfs(int start){
-        // Visita o vértice
-        vis[start] = true;
-        // Percorre os vizinhos 
-        for (auto p : g[start]) {
-            // Visita os vizinhos não visitados
-            if (vis[p] ==  false){
-                dfs(p);
+int dfs(int start){
+    // Visita o vértice
+    vis[start] = true;
+    // Percorre os vizinhos 
+    for (auto p : g[start]) {
+        // Visita os vizinhos não visitados
+        if (vis[p] ==  false){
+            dfs(p);
+        }
+    }
+}
+```
+
+### BFS
+
+(Busca em Largura)
+
+Processo similar ao do DFS, porém, ao invés de funções recursivas, o vizinho é adicionado a uma fila e processado posteriormente. Assim, o BFS visita os vértices em ordem crescente de distância para o inicial.
+
+```cpp
+void bfs(int start) {
+    queue <int> q;
+    // Inicio a fila com o vértice de início
+    q.push(start);
+    vis[start] = true;
+    // Enquanto tiver vertices na fila
+    while(!q.empty()){
+        // Guarda o vértice
+        int v = q.front();
+        // Retira-o da fila
+        q.pop();
+        // Percorre seus vizinhos
+        for(auto u: g[v]){
+            // se o vizinho não foi visitado
+            if(!vis[u]){
+                // Visito o vizinho
+                vis[u] = true;
+                // Adiciono na fila
+                q.push(u);
             }
         }
     }
-
-- BFS (busca em largura)
-
-    Processo similar ao do DFS, porém, ao invés de funções recursivas, o vizinho é adicionado a uma fila e processado posteriormente. Assim, o BFS visita os vértices em ordem crescente de distância para o inicial.
-
-    ```cpp
-    void bfs(int start) {
-        queue <int> q;
-        // Inicio a fila com o vértice de início
-        q.push(start);
-        vis[start] = true;
-        // Enquanto tiver vertices na fila
-        while(!q.empty()){
-            // Guarda o vértice
-            int v = q.front();
-            // Retira-o da fila
-            q.pop();
-            // Percorre seus vizinhos
-            for(auto u: g[v]){
-                // se o vizinho não foi visitado
-                if(!vis[u]){
-                    // Visito o vizinho
-                    vis[u] = true;
-                    // Adiciono na fila
-                    q.push(u);
-                }
-            }
-        }
-    }
-    ```
+}
+```
 
 - Aplicações: 
     - Saber quantos componentes há no grafo
@@ -173,3 +183,57 @@ Aresta da forma (u,u), a aresta começa e termina no mesmo vértice.
     
     Outra maneira é calcular o número de vértices e arestas em cada componente. Se contém C vértices, deve conter exatamente c-1 arestas para não ter ciclos, se tem C ou mais arestas, contém um ciclo.
 
+### Caminho Mínimo
+
+### Dijkstra
+
+Encontra o menor caminho desde a origem até todos os vértices do grafo.
+
+Inicialmente, a distância no vértice inicial é zero e a dos outros é infinito. A cada passo, é selecionado o vértice que não foi processado e que a distância é a menor possível. Para eficiência, é utilizado uma fila de prioridade do menor para o maior.
+
+OBS1: Não pode conter arestas de pesos negativos 
+
+OBS2: O peso da aresta é guardado primeiro no pair
+```cpp
+g[u].push_back({custo, v});
+g[v].push_back({custo, u});
+```
+
+Implementação:
+
+```cpp
+vector <pair <int, int> > g[maxm];
+int n, dist[maxm];
+
+void dijkstra(int origem) {
+    // Inicializa distancias para infinito
+    memset(dist, 63, sizeof dist);
+    
+    priority_queue < pair<int,int> > pq;
+    pq.push({0, origem});
+    dist[origem] = 0;
+
+    while (pq.size()) {
+        int v = pq.top().second;
+
+        // d negativa para prioridade ser a menor distancia
+        int dv = -pq.top().first;
+        pq.pop();
+
+        // Se já for a melhor distância
+        if (dv > dist[v]) continue;
+
+        for (auto i : g[v]) {
+            // Vertice
+            int u = i.second;
+            // Aresta
+            int du = i.first;
+            // Se a distância for melhor, atualizo a distancia e adiciono na fila 
+            if (dist[u] > dist[v] + du) {
+                dist[u] = dist[v] + du;
+                pq.push({-dist[u], u});
+            }
+        }
+    }
+}
+```
