@@ -1,18 +1,32 @@
 # Grafos
 
-São um conjunto de vértices(V) e arestas(E), que são pares de vértices.
-- self-loop: aresta da forma (u,u)
+São um conjunto de vértices(V) e arestas(E), que são pares de vértices. Um caminho vai do vértice a até o b, e o comprimento é o número de arestas nele.
+
+> Grau de um vértice
+    
+ É o número de arestas que são incidentes no vértice
+> Vertices vizinhos
+
+Dados dois vértices(u e v), eles são vizinhos se existir uma aresta (u,v) interligando-os, ou seja, se existir um caminho entre os dois.
+
+
+> Self-loop: 
+
+Aresta da forma (u,u), a aresta começa e termina no mesmo vértice.
+
+
 > Tipos de Grafos:
+- Conectado: se tem um caminho entre quaisquer dois vértices
 - Multi-grafo: possui duas arestas iguais.
 - Simples: não é um multi-grafo nem possui um self-loop
-- Diferecionados: aresta só pode ser percorrida em um sentido (representação por setas)
+- Direcionados: aresta só pode ser percorrida em um sentido (representação por setas)
+- Bipartido: cada vértice pode ser colorido usando 2 cores, e não há dois vértices adjacentes com a mesma cor. Ocorre quando um grafo não contém um ciclo com um número ímpar de arestas
 - Conexo: bidirecional que, para todo vértice u e para todo vértice v pertencentes ao gráfico, existe um caminho de um para o outro.
 - Ciclo: quando existe um caminho de um vértice para ele mesmo
-- Árvore: conexo e não possuir ciclos.
-> Grau de um vértice
-- É o número de arestas que são incidentes no vértice
-> Vertices vizinhos
-- Dados dois vértices(u e v), eles são vizinhos se existir uma aresta (u,v) interligando-os, ou seja, se existir um caminho entre os dois.
+- Árvore: é um gráfico conectado que consiste de n vértices e n-1 arestas, e tem apenas um caminho entre qualquer dois vértices
+- Ponderado: cada aresta possui um peso. O caminho é a soma dos pesos
+- Regular: se o grau de cada vértice é uma constante
+- Completo: se o grau de cada vértice é n-1, ou seja, o grafo contém todas as possíveis arestas entre os vértices.
 
 ## Montagem de um Grafo
 
@@ -111,7 +125,7 @@ São um conjunto de vértices(V) e arestas(E), que são pares de vértices.
 
 - BFS (busca em largura)
 
-    Processo similar ao do DFS, porém, ao invés de funções recursivas, o vizinho é adicionado a uma fila e processado posteriormente.
+    Processo similar ao do DFS, porém, ao invés de funções recursivas, o vizinho é adicionado a uma fila e processado posteriormente. Assim, o BFS visita os vértices em ordem crescente de distância para o inicial.
 
     ```cpp
     void bfs(int start) {
@@ -128,7 +142,7 @@ São um conjunto de vértices(V) e arestas(E), que são pares de vértices.
             // Percorre seus vizinhos
             for(auto u: g[v]){
                 // se o vizinho não foi visitado
-                if(vis[u] == false){
+                if(!vis[u]){
                     // Visito o vizinho
                     vis[u] = true;
                     // Adiciono na fila
@@ -153,3 +167,9 @@ São um conjunto de vértices(V) e arestas(E), que são pares de vértices.
         }
     }
     ```
+    - Encontrar Ciclos
+
+    Encontramos um vértice cujo vizinho (diferente do vértice anterior no caminho atual) já foi visitado.
+    
+    Outra maneira é calcular o número de vértices e arestas em cada componente. Se contém C vértices, deve conter exatamente c-1 arestas para não ter ciclos, se tem C ou mais arestas, contém um ciclo.
+
