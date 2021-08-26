@@ -9,9 +9,9 @@
 
 
 ## Livros
-- [CP - algorithms](https://cp-algorithms.com/)
-- [Competitive Programmer’s Handbook](https://cses.fi/book/book.pdf)
-- [Competitve Programming 3](https://drive.google.com/file/d/0B9_PJNHU4_-dMFZZN19Uak14aFU/view?resourcekey=0-leu81qNeG9kU_g3pTlEGLQ)
+- [📚 CP - algorithms](https://cp-algorithms.com/)
+- [📚 Competitive Programmer’s Handbook](https://cses.fi/book/book.pdf)
+- [📚](https://drive.google.com/file/d/0B9_PJNHU4_-dMFZZN19Uak14aFU/view?resourcekey=0-leu81qNeG9kU_g3pTlEGLQ) [Competitve Programming 3](https://cpbook.net/)
 
 ## Sites - Aprendizado
 - [Neps](https://neps.academy/)
