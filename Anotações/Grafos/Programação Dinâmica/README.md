@@ -1,8 +1,14 @@
 ## Programação Dinâmica
 
-A ideia da Programação Dinâmica é evitar recalculos em funções recursivas.
+A ideia da Programação Dinâmica é passar por todas as soluções possíveis e evitar recalculos em funções recursivas.
 
 Para isso, salvamos todos os resultados que já obtemos até então, e na chamada da função, verificamos se aquele dado caso já foi calculado. Caso não foi, calculamos-o.
+
+Pode ser aplicada se o problema puder ser dividido em subproblemas que podem ser divididos de forma independente.
+
+Usos:
+- Achar uma solução ótima
+- Achar o número de soluções
 
 Template genérico:
 
@@ -35,3 +41,7 @@ A função recursiva chama os casos mais de cima até chegar aos casos base, e s
 ### Bottom-Up
 
 Primeiro é construído os casos base e a partir deles é criado os casos de cima, até chegarmos ao valor procurado.
+
+## Problemas Clássicos
+
+### Problema da moeda
