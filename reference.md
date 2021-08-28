@@ -6,6 +6,13 @@ typedef vector<ii> vii;
 typedef vector<int> vi;
 typedef push_back pb;
 #define INF 1000000000
+
+int main() {
+    ios_base::sync_with_stdio(false);cin.tie(NULL);
+
+
+    return 0;
+}
 ```
 
 ## DFS
