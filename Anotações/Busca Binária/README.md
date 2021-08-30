@@ -48,10 +48,14 @@ OBS: as funções retornam ponteiros
 
 > Para sabermos o índice
 
-```cpp int ind = lower (v, v + n, x) - v;```
+```cpp
+int ind = lower (v, v + n, x) - v;
+```
 
 
-```cpp int ind = lower (v.begin(), v.end(), x) - v.begin();```
+```cpp 
+int ind = lower (v.begin(), v.end(), x) - v.begin();
+```
 
 ## Aplicações:
 
@@ -111,4 +115,9 @@ int binarySearch () {
 }
 ```
 
-
+## Exercícios 
+- 📗 [Onde está o Mármore?](https://www.urionlinejudge.com.br/judge/pt/problems/view/1025)
+- 📗 [Soma das Casas](https://neps.academy/br/exercise/524)
+- 📒 [Cápsulas](https://neps.academy/br/exercise/205)
+- 📒 [Pão a Metro](https://neps.academy/br/exercise/605)
+- 📙 [Array Division](https://cses.fi/problemset/task/1085)
