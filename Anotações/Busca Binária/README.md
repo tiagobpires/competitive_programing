@@ -53,8 +53,62 @@ OBS: as funções retornam ponteiros
 
 ```cpp int ind = lower (v.begin(), v.end(), x) - v.begin();```
 
-## Código:
+## Aplicações:
+
+### -  Encontrar determinado número
+> Buscar um número em um vetor ordenado
+```cpp
+vector <int> v;
+
+// n = número que estou procurando
+int binarySearch(int n) {
+    int l = 0, r = v.size() - 1, m;
+
+    // Enquanto houver um intervalo válido
+    while (l <= r) {
+        m = (l + r) / 2;
+        // Se encontrei o número, retorno a posição dele
+        if (v[m] == n)
+            return m;
+        // Se o número verificado for maior, descarto o intervalo do final
+        else if (v[m] > n)
+            r = m - 1;
+        // Se o número verificado for menor, descarto o intervalo do inicio
+        else if (v[m] < n) 
+            l = m + 1;
+    } 
+
+    // Caso o número não foi encontrado, retorno -1
+    return -1;
+}
+```
+### -  "Chutar" a resposta
+> Consiste em realizar a busca binária no intervalo possível de respostas e checar se o possível resultado é uma possível resposta ou não
+
+> O código vai depender de cada situação, mas em geral consiste em uma busca binária em que **l = valor mínimo possível** e **r = valor máximo possível** e uma **função** para checar o valor
 
 ```cpp
+// Checa se possível resposta está de acordo 
+// com os requisitos
+bool check(int n) {}
 
+int binarySearch () {
+    // intervalo possível: 0 a 10^8
+    int l = 0, r = 10e8, m, ans = -1;
+
+    while (l <= r) {
+        int m = (l + r) / 2;
+        // Depende de cada problema
+        if (check(m)) {
+            ans = m;
+            r = m - 1;
+        } else {
+            l = m + 1;
+        }
+    } 
+
+    return ans;
+}
 ```
+
+
