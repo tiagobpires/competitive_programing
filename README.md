@@ -5,7 +5,9 @@
 - [Referência](/reference.md)
 
 > Anotações de estudo:
-- [Grafos](/Grafos/README.md)
+- [Grafos](/Grafos)
+- [Programação Dinâmica](/Programação_Dinâmica)
+- [Busca Binária](/Busca_Binária)
 
 
 ## Livros

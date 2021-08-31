@@ -1,3 +1,10 @@
+## Sumário
+- [Template](#template)
+- Grafos
+    - [DFS](#dfs)
+    - [BFS](#bfs)
+    - [Dijkstra](#dijkstra)
+- [Busca Binária](#busca-binária)
 ## Template
 ```cpp
 typedef long long ll;
@@ -79,5 +86,30 @@ void dijkstra(int origem) {
             }
         }
     }
+}
+```
+
+## Busca Binária
+```cpp
+bool check (int x) {
+
+}
+
+vector <int> v;
+
+int binarySearch(int n) {
+    int l = 0, r = v.size() - 1, m;
+
+    while (l <= r) {
+        m = (l + r) / 2;
+        if (check(m))
+            return m;
+        else if (v[m] > n)
+            r = m - 1;
+        else if (v[m] < n) 
+            l = m + 1;
+    } 
+
+    return -1;
 }
 ```
