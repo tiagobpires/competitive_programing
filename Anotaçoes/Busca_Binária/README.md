@@ -1,5 +1,9 @@
 # Busca Binária
 
+- [Explicação](#explicação)
+
+## Explicação
+
 Trata-se de forma de fazer uma busca em um vetor de números **ordenados**
 
 Em cada etapa da busca binária, dividimos o intervalo de respostas possíveis pela metade e verificamos em qual metade o elemento que estamos procurando está e eliminamos a outra metade, pois temos certeza que ela não estará lá.
@@ -44,7 +48,13 @@ No C++, já há funções para busca binária, que levam como argumentos ```(com
 
     ex: upper_bound(v, v + n, x)
 
-OBS: as funções retornam ponteiros
+- **equal_range**
+
+    retorna os dois ponteiros listados anteriormente
+
+    ex: equal_range(v, v + n, x)
+
+OBS: as funções retornam ponteiros e assumem que o array está ordenado, Se não houver o elemento procurado, o ponteiro aponta para o elemento depois da última posição do array.
 
 > Para sabermos o índice
 
@@ -52,9 +62,21 @@ OBS: as funções retornam ponteiros
 int ind = lower (v, v + n, x) - v;
 ```
 
-
 ```cpp 
 int ind = lower (v.begin(), v.end(), x) - v.begin();
+```
+
+> Para encontramos o número de elementos que tem valor igual a x
+
+```cpp
+auto s = lower_bound(v.begin(), v.end(), x);
+auto e = upper_bound(v.begin(), v.end(), x);
+cout << s - e << endl;
+```
+
+```cpp
+auto range = equal_range(v.begin(), v.end(), x);
+cout << range.second - range.first << endl;
 ```
 
 ## Aplicações:
