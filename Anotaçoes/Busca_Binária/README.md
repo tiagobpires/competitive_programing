@@ -1,6 +1,8 @@
 # Busca Binária
 
-- [Explicação](#explicação)
+- [👨‍🏫 Explicação](#explicação)
+- [🤸 Aplicações](#aplicações)
+- [🏋️ Exercícios](#exercícios)
 
 ## Explicação
 
