@@ -6,13 +6,38 @@ Para isso, salvamos todos os resultados que já obtemos até então, e na chamad
 
 Pode ser aplicada se o problema puder ser dividido em subproblemas que podem ser divididos de forma independente.
 
+programa q vou fazer:
+- nao pode ser cíclico
+- tenho que ter independência entre as respostas
+
 Usos:
 - Achar uma solução ótima
 - Achar o número de soluções
 
+Fibonacci
+ ```cpp
+// guarda os valores já calculados
+int dp[maxn]
+
+int fib(int x) {
+    if (x == 1 || x == 0) return 1;
+    // Se já calculei, apenas retorno o valor salvo
+    if (dp[x] != -1) return d[x];
+
+    // Se não, calculo, guardo o resultado e o retorno
+    return dp[x] = fib(n-1) + fib(n-2) // % (10^9+7)
+}
+
+int main() {
+    // Inicializo os valores com -1
+    memset(dp, -1, sizeof dp);
+    //dp[0] = dp[1] = 1;
+}
+```
+
 Template genérico:
 
- ```cpp
+```cpp
 // guarda os valores já calculados
 int dp[maxn]
 
