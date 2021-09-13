@@ -80,3 +80,45 @@ int main() {
 
 ### Problema da moeda
 
+```cpp
+int dp[maxn], n, m, moedas[maxn];
+
+int troco(int val) {
+    // Ja consegui trocar o valor
+    if (val == 0) return 0;
+    // Ja calculei subproblema
+    if (dp[val] != -1) return dp[val];
+
+    int aux = 1e9;
+    // Passar por todas as moedas
+    for (int i = 0; i < n; i++) {
+        // Se eu puder utilizar essa moeda
+        if (moedas[i] <= val) {
+            // Minímo entre ele e a situação de eu usar a moeda  
+            aux = min(aux, 1 + troco(val-moedas[i]));
+        }
+    }
+    return dp[val] = aux;
+}
+
+int main() {
+    // m = valor que quero trocar, n = numero de moedas
+    cin >> m >> n;
+
+    for (int i = 0; i < n; i++) {
+        cin >> moedas[i];
+    }
+
+    // Inicio vetor dp em -1
+    memset(dp, -1, sizeof dp);
+            
+    int resp = troco(m);
+    if (resp == 1e9) 
+        cout << "Impossivel" << endl;
+    else   
+        cout << resp << endl;  
+
+
+    return 0;
+}
+```
