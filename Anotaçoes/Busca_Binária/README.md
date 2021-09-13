@@ -144,6 +144,7 @@ int binarySearch () {
 - 📗 [Soma das Casas](https://neps.academy/br/exercise/524)
 - 📒 [Cápsulas](https://neps.academy/br/exercise/205)
 - 📒 [Pão a Metro](https://neps.academy/br/exercise/605)
+- 📒 [Ajude Seu Madruga](https://www.urionlinejudge.com.br/judge/pt/problems/view/1912)
 - 📙 [Cabo de Guerra](https://www.urionlinejudge.com.br/judge/pt/problems/view/1586)
 - 📙 [Array Division](https://cses.fi/problemset/task/1085)
 
