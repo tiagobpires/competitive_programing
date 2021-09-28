@@ -52,6 +52,7 @@ Ou seja, Fn = F(n-1) + F(n-2)
 
 Assim, a sequência seria: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...
 
+- Top Down
 ```cpp
 int fib(int x) {
     // Casos base da sequência de fibonacci
@@ -77,8 +78,22 @@ int main() {
     return 0;
 }
 ```
+- Bottom Up
+```cpp
+int fib(n) {
+    int f[maxn];
+    f[0] = 0, f[1] = 1;
+    for (int i = 2; i <= n; i++) {
+        f[i] = f[i - 1] + f[i - 2];
+    }
+    return f[n];
+}
+```
 
-### Problema da moeda
+### [Problema da moeda](https://br.spoj.com/problems/MOEDAS/)
+> Dado um vetor de moedas, descobrir qual a solução ótima(menor número de moedas necessárias) para obter um determinado valor 
+
+> Cada moeda pode ser utilizada várias vezes
 
 ```cpp
 int dp[maxn], n, m, moedas[maxn];
@@ -118,7 +133,37 @@ int main() {
     else   
         cout << resp << endl;  
 
-
     return 0;
+}
+```
+
+## [Problema do Troco](https://br.spoj.com/problems/TROCO13/)
+> Saber se é possível ou não obter um troco com as moedas que tem
+
+> Cada moeda de determinada posição do vetor podem ser utilizadas apenas uma vez
+
+```cpp
+int dp[maxn][100010], n, m, moedas[maxn];
+bool flag = false;
+
+void troco(int idm, int soma) {   
+    // Consegui uma solução
+    if (soma == m) flag = true;
+    if (flag) return;
+
+    // Solução não é possível
+    if (idm >= n || soma > m) return;
+
+    // Já foi "visitado"
+    if (dp[idm][soma] != -1) return;
+
+    // Marco como já "visitado"
+    dp[idm][soma] = 1;
+
+    // Utilizando a moeda
+    troco(idm+1, soma + moedas[idm]);
+
+    // Não utilizando a moeda
+    troco(idm+1, soma); 
 }
 ```
