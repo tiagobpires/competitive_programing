@@ -160,6 +160,9 @@ Parâmetros:
 - O container onde serão alocados os elementos (default: vector)
 - A função de comparação (default: topo é o maior elemento)
 ```cpp
+// Maior primeiro
+priority_queue <int> pq;
+// Menor primeiro
 priority_queue <int, vector <int>, greater <int>> pq;
 ```
 OBS: Adicionar o negativo do elemento para o topo ser o menor elemento
