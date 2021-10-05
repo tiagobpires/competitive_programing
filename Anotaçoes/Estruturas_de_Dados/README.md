@@ -273,3 +273,80 @@ mp["Tiago"] = 5;
 cout << mp["Tiago"] << endl;
 ```
 OBS: se utilizado para procurar elemento, caso o elemento não exista, o elemento será criado.
+
+# Set
+Segue a ideia de um conjunto, em que os elementos não são duplicados e os mantém em ordem crescente. Além disso, os elementos não podem ser modificados, apenas inseridos ou removidos.
+
+É utilizado quando precisamos manter valores ordenados ou manter apenas uma instância do elemento.
+
+> Declaração
+```cpp
+set <int> st;
+```
+
+> Operações
+- Inserir novo elemento O(log n)
+  Utilizamos ```{chave, elemento}```
+```cpp
+st.insert(1)
+```
+OBS: Ao inserir um elemento que já foi inserido, é retornado um ponteiro para o elemento que foi inserido inicialmente.
+
+- Retorna um ponteiro para o primeiro elemento O(1)
+```cpp
+auto ptr = st.begin();
+
+cout << *ptr;
+```
+
+- Retorna um ponteiro para o último elemento O(1)
+OBS: é o ponteiro para onde termina a estrutura, para acessar o último elemento, deve-se voltar uma posição.
+```cpp
+auto ptr = st.end();
+
+// Último elemento
+ptr--;
+cout << *ptr;
+```
+
+- Quantidade de elementos O(1)
+```cpp
+cout << st.size() << endl;
+```
+
+- Remove um elemento do set O(log n)
+```cpp
+st.erase(10);
+```
+
+- Apagar tudo O(n)
+```cpp
+st.clear();
+```
+
+- Encontrar um elemento O(log n)
+    Caso o elemento não seja encontrado, retorna um ponteiro para o final
+```cpp
+if (st.find(12) != mp.end())
+    cout << "achou" << endl;
+else
+    cout << "não achou" << endl;
+```
+
+- Acesso do elemento, operador ```[]``` O(log n)
+
+    Operações possíveis:
+    - Acessar diretamente um elemento
+    - Criar um elemento 
+    - Modificar um elemento
+```cpp
+// Criando 
+mp["Tiago"] = 10;
+
+// Modificando 
+mp["Tiago"] = 5;
+
+// Acessando
+cout << mp["Tiago"] << endl;
+```
+OBS: se utilizado para procurar elemento, caso o elemento não exista, o elemento será criado.
