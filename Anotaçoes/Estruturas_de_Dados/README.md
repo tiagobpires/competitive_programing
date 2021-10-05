@@ -187,3 +187,89 @@ cout << pq.top() << endl;
 ```cpp
 cout << pq.size() << endl;
 ```
+
+# Map
+É um mapeamento para uma dada relação entre elementos, inclusive de diferentes tipos de dados. Funciona como um dicionário, onde temos uma **chave** e um **valor**, e esses elementos são ordenados com base na chave.
+
+Exemplo: 
+    Se quisermos relacionar o nome de um aluno com sua nota, o aluno seria a **chave** e a nota (valor correspondente e relacionado a chave) seria o **valor**
+
+São utilizados para problemas de associação de valores numéricos e/ou não númericos.
+
+> Declaração
+Parâmetros:
+- Tipo de elemento da chave
+- Tipo de elemento do valor
+
+```cpp
+map <string, int> mp;
+```
+
+> Operações
+- Inserir novo elemento O(log n)
+  Utilizamos ```{chave, elemento}```
+```cpp
+pq.insert({"Tiago", 1})
+```
+OBS: Ao inserir dois elementos com uma mesma chave, não será realizada a segunda inserção, e será retornado um ponteiro para o elemento que foi inserido inicialmente.
+
+- Retorna um ponteiro para o primeiro elemento O(1)
+```cpp
+auto ptr = mp.begin();
+
+cout << ptr->first << ptr->second;
+```
+
+- Retorna um ponteiro para o último elemento O(1)
+OBS: é o ponteiro para onde termina a estrutura, para acessar o último elemento, deve-se voltar uma posição.
+```cpp
+auto ptr = mp.end();
+
+// Último elemento
+ptr--;
+cout << ptr->first << ptr->second;
+```
+
+- Quantidade de elementos O(1)
+```cpp
+cout << mp.size() << endl;
+```
+
+- Remove um par do mapa O(log n)
+    Recebe como parâmetro a chave que deseja remover
+```cpp
+mp.erase("Tiago");
+```
+OBS: quando não existe essa chave, nada é modificado
+
+- Apagar tudo O(n)
+```cpp
+mp.clear();
+```
+
+- Encontrar um elemento O(log n)
+    Caso o elemento não seja encontrado, retorna um ponteiro para o final
+```cpp
+if (mp.find("Tiago") != mp.end())
+    cout << "achou" << endl;
+else
+    cout << "não achou" << endl;
+```
+
+- Acesso do elemento, operador ```[]``` O(log n)
+
+    Operações possíveis:
+    - Acessar diretamente um elemento
+    - Criar um elemento 
+    - Modificar um elemento
+```cpp
+// Criando 
+mp["Tiago"] = 10;
+
+// Modificando 
+mp["Tiago"] = 5;
+
+// Acessando
+cout << mp["Tiago"] << endl;
+```
+OBS: se utilizado para procurar elemento, caso o elemento não exista, o elemento será criado.
